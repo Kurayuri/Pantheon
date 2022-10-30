@@ -31,17 +31,16 @@ def main():
     if args.option == 'sender':
         os.environ['LD_LIBRARY_PATH'] = path.join(lib_dir)
         # cmd = [send_src, 'send', args.ip, args.port]
-        
+
         # aurora
         cmd = [send_src, 'send', args.ip, args.port, 
             "--pcc-rate-control=python",
             "-pyhelper=loaded_client",
-            "-pypath=/home/kurayuri/pantheon/third_party/aurora/PCC-RL/src/udt-plugins/testing/",
+            "-pypath="+cc_repo+"/PCC-RL/src/udt-plugins/testing/",
             "--history-len=10",
             "--pcc-utility-calc=linear",
-            "--model-path=/home/kurayuri/pantheon/third_party/aurora/model/origin"
-            # "--model-path=/home/kurayuri/pantheon/third_party/aurora/model/aurora_withp3"
-            # "--model-path=/home/kurayuri/pantheon/third_party/aurora/model/aurora_trained"
+            "--model-path="+cc_repo+"/model/"+args.model
+            # "--model-path=/home/kurayuri/pantheon/third_party/aurora/model/origin"
         ]
         print(" ".join(cmd))
         check_call(cmd)

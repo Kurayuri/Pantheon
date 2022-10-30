@@ -27,11 +27,13 @@ def parse_wrapper_args(run_first):
         sender_parser.add_argument(
             'ip', metavar='IP', help='IP address of receiver')
         sender_parser.add_argument('port', help='port of receiver')
+        sender_parser.add_argument('--model', help='model to use',required=False,default="default")
     else:
         sender_parser.add_argument('port', help='port to listen on')
+        sender_parser.add_argument('model', help='model to use')
         receiver_parser.add_argument(
             'ip', metavar='IP', help='IP address of sender')
-        receiver_parser.add_argument('port', help='port of sender')
+        sender_parser.add_argument('--model', help='model to use',required=False,default="default")
 
     args = parser.parse_args()
 
